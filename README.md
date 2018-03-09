@@ -1,17 +1,18 @@
-#
 # PredKey - predictive keyboard prototype
-# by Heiko Lange
-#
-# Capstone project for the Data Science Course on Coursera
-# by Johns Hopkins University
-#
+
+by Heiko Lange
+
+Capstone project for the Data Science Course on Coursera
+by Johns Hopkins University
+
+# Introduction
 
 PredKey is a keyboard that help users typing english sentences.
 Based on ngrams (last typed words) and potentially the partial
 word already typed, PredKey will suggest the next words.
 
-List of files:
---------------
+# List of files
+```
 README.md                 - this file
 KeyboardPresentation.Rmd  - pitch presentation in as R markdown
 KeyboardPresentation.html - pitch presentation knitted into html format
@@ -29,3 +30,5 @@ measurement.Rdata         - contains % keypresses of PredKey vs regular keyboard
 blogs.Rdata               - contains % keypresses of PredKey vs regular keyboard for 1.000 sample blog entries
 news.Rdata                - contains % keypresses of Predkey vs regular keyboard for 1.000 sample news articles
 twitter.Rdata             - contains % keypresses of Predkey vs regular keyboard for 1.000 twitter tweets
+```
+
