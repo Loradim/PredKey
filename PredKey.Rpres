@@ -72,7 +72,11 @@ Resources
 ========================================================
 
 * PredKey App online: <https://loradim.shinyapps.io/PredKey>
-  (Please be aware that the server is a bit slow - predictions might be a bit laggy - locally it runs much better)
+
+1. Click on the link
+2. Start typing your sentence, stop and wait a second. Suggestions will be loaded automatically.
+3. If you finish a word (add a space after it or a comma) it will suggest the next word
+4. If you are still typing the word (no space, comma or point) it will give suggestions for current word
 
 * PredKey pitch slides: <http://rpubs.com/Loradim/PredKey>
 

@@ -17,7 +17,7 @@ ui <- fluidPage(
         
     # Application title
     titlePanel("Predictive keyboard"),
-    textInput(inputId = "text", label = "Start typing your sentence in english", value = "", width = 609),
+    textInput(inputId = "text", label = "Start typing in english. After a space it will predict a new word. If you stop in the middle of a word it will predict the current word.", value = "", width = 609),
     actionButton(inputId = "b1", label = "?", width = 200),
     actionButton(inputId = "b2", label = "?", width = 200),
     actionButton(inputId = "b3", label = "?", width = 200)
