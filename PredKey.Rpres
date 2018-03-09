@@ -1,22 +1,24 @@
----
-title: "PredKey<br>Type faster - finish early"
-author: "Heiko Lange"
-date: "8th of March 2018"
-output: ioslides_presentation
----
+PredKey - type faster
+========================================================
+author: Heiko Lange
+date: 9th of March 2018
+autosize: true
+
+What is Predkey?
+========================================================
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## What is Predkey?
 - PredKey is an innovative and <span style="color:blue"><b>improved</b></span> keyboard
 - PredKey <span style="color:blue"><b>predicts</b></span> the next word in the sentence and gives the top three suggestions. With a click/keypress you accept the suggested word without fully typing it
-- PredKey works both with <span style="color:blue"><b>ngrams</b></span> (looking the the words typed before) and taking into account the <span style="color:blue"><b>partial word</b></span> the user already has typed
+- PredKey works both with <span style="color:blue"><b>ngrams</b></span> (looking at the last few words) and taking into account the <span style="color:blue"><b>partial word</b></span> the user already has typed
 - PredKey uses a dictionary of 20,000 <span style="color:blue"><b>most common</b></span> english words
 - PredKey's algorithm is <span style="color:blue"><b>easy to extend</b></span> (e.g. learn new words, new ngrams the user often uses)
 
-## Performance of PredKey
+Performance of PredKey
+========================================================
 
 ```{r cache=TRUE, echo=FALSE}
 load("blogs.Rdata")
@@ -40,9 +42,10 @@ meas_twitter <- paste0(format((1 - median(measurement2)) * 100, digits = 4), " %
 
 But how does PredKey perform in a <span style="color:red"><b>torture</b></span> scenario?
 
-## PredKey in <span style="color:red"><b>torture</b></span> scenario
+PredKey in torture scenario
+========================================================
 
-```{r cache=TRUE}
+```{r cache=TRUE, echo=FALSE, fig.width=8, fig.height=4.5, dpi=300, out.width="940px", out.height="529px"}
 library(ggplot2)
 library(scales)
 
@@ -65,15 +68,16 @@ g <- g + geom_text(aes(x = 1.25, y = 5000, label = "Each point = one paragraph f
 g
 ```
 
-## Resources
+Resources
+========================================================
 
 * PredKey App online: <https://loradim.shinyapps.io/PredKey>
   (Please be aware that the server is a bit slow - predictions might be a bit laggy - locally it runs much better)
 
-* PredKey pitch: <https://github.com/Loradim/PredKey>
+* PredKey pitch slides: <http://rpubs.com/Loradim/PredKey>
 
 * PredKey on github: <https://github.com/Loradim/PredKey>
 
 ### Contact me
 
-* Email: misterman<span style="color:red">[at]</span> gmx<span style="color:red">[dot] </span>de
+* Email: misterman <span style="color:red">[at]</span> gmx <span style="color:red">[dot] </span>de
