@@ -1,0 +1,79 @@
+---
+title: "PredKey<br>Type faster - finish early"
+author: "Heiko Lange"
+date: "8th of March 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What is Predkey?
+- PredKey is an innovative and <span style="color:blue"><b>improved</b></span> keyboard
+- PredKey <span style="color:blue"><b>predicts</b></span> the next word in the sentence and gives the top three suggestions. With a click/keypress you accept the suggested word without fully typing it
+- PredKey works both with <span style="color:blue"><b>ngrams</b></span> (looking the the words typed before) and taking into account the <span style="color:blue"><b>partial word</b></span> the user already has typed
+- PredKey uses a dictionary of 20,000 <span style="color:blue"><b>most common</b></span> english words
+- PredKey's algorithm is <span style="color:blue"><b>easy to extend</b></span> (e.g. learn new words, new ngrams the user often uses)
+
+## Performance of PredKey
+
+```{r cache=TRUE, echo=FALSE}
+load("blogs.Rdata")
+meas_blogs <- paste0(format((1 - median(measurement2)) * 100, digits = 4), " %")
+load("news.Rdata")
+meas_news <- paste0(format((1 - median(measurement2)) * 100, digits = 4), " %")
+load("twitter.Rdata")
+meas_twitter <- paste0(format((1 - median(measurement2)) * 100, digits = 4), " %")
+```
+
+#### How much can you improve when using PredKey?
+<br>
+
+* 1,000 blog entry samples: avg <span style="color:blue"><b>`r meas_blogs`</b></span> less keypresses
+
+* 1,000 news article samples: avg <span style="color:blue"><b>`r meas_news`</b></span> less keypresses
+
+* 1,000 twitter tweets samples: avg <span style="color:blue"><b>`r meas_twitter`</b></span> less keypresses
+
+<br>
+
+But how does PredKey perform in a <span style="color:red"><b>torture</b></span> scenario?
+
+## PredKey in <span style="color:red"><b>torture</b></span> scenario
+
+```{r cache=TRUE}
+library(ggplot2)
+library(scales)
+
+load("measurement.Rdata")
+con <- file("infinitejest.txt")
+infinitejest <- readLines(con = con)
+close(con = con)
+
+se_med <- (sum((measurement - median(measurement))^2) / length(measurement))^0.5 / sqrt(length(measurement))
+g <- ggplot(data = data.frame(measurement, chars = nchar(infinitejest)), aes(x = measurement, y = chars))
+g <- g + geom_point(alpha = 0.05)
+g <- g + theme_bw()
+g <- g + ggtitle("Improvements in typing 'Infinite Jest' (3.2 Mio chars) by David Foster Wallace\nAn author well known for his excessive usage of extended vocabulary")
+g <- g + xlab("% keypresses needed per paragraph with PredKey opposed to regular keyboard")
+g <- g + ylab("Length of paragraph in characters")
+g <- g + geom_vline(xintercept = median(measurement), col = "red")
+g <- g + geom_text(aes(x = median(measurement), y = 5000, label = "Median = 69.23% (SE_median = 0.19%)"), col = "red", angle = 90, vjust = 1.5)
+g <- g + scale_x_continuous(labels = percent)
+g <- g + geom_text(aes(x = 1.25, y = 5000, label = "Each point = one paragraph from the book\nMedian reduction in keypresses = 30.77%\n\nOverall reduction in keypresses for whole book is 32.6%\n\nOnly a few short paragraphs could potentially increase keypresses\nWorst case example: 'E.T.A. lot.'\nReason: after each prediction the algorithm adds a whitespace,\nwhich the user might have to delete and replace"), col = "blue")
+g
+```
+
+## Resources
+
+* PredKey App online: <https://loradim.shinyapps.io/PredKey>
+  (Please be aware that the server is a bit slow - predictions might be a bit laggy - locally it runs much better)
+
+* PredKey pitch: <https://github.com/Loradim/PredKey>
+
+* PredKey on github: <https://github.com/Loradim/PredKey>
+
+### Contact me
+
+* Email: misterman<span style="color:red">[at]</span> gmx<span style="color:red">[dot] </span>de
