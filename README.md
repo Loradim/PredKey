@@ -14,8 +14,7 @@ word already typed, PredKey will suggest the next words.
 # List of files
 ```
 README.md                 - this file
-KeyboardPresentation.Rmd  - pitch presentation in as R markdown
-KeyboardPresentation.html - pitch presentation knitted into html format
+PredKey.Rpres             - pitch slides for PredKey
 
 download.R                - downloader for examples given by
 Building ngrams.R         - loads, analyses, tokenizes texts, builds dictionary and ngrams
